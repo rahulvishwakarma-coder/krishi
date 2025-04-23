@@ -11,7 +11,7 @@ const MongoURI = process.env.mongoURI;
 
 const userSchema = new mongoose.Schema({
     Name:String,
-    Phone:Number,
+    Phone:String,
     describe:String
 })
 
