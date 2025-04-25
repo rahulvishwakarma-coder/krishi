@@ -22,8 +22,9 @@ const connectDB = async ()=>{
     console.log("connect Successfull");
 }
 
+connectDB().catch((error) => console.log(error));
+
 const adduser = async (Name,Phone, describe)=>{
-    await connectDB().catch((error) => console.log(error));
     const user = new User({
         Name,
         Phone,
@@ -44,6 +45,12 @@ app.post('/api/form', async (request,response)=>{
     response.send(200);
 })
 
+app.get('/api/users',(request,response)=>{
+    User.find()
+        .then((users)=>{
+            response.send(users);
+        })
+})
 app.listen(PORT,()=>{
     console.log(`Server is running on PORT${PORT}`);
 })
